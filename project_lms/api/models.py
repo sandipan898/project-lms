@@ -16,6 +16,9 @@ class Student(models.Model):
         full_name = self.first_name + " " + self.last_name
         return full_name
 
+    def __str__(self):
+        return self.user.username
+
 
 @receiver(post_save, sender=User)
 def create_student(sender, instance, created, **kwargs):
@@ -32,7 +35,8 @@ class Course(models.Model):
     duration = models.FloatField()
     prereq = models.TextField(blank=True, null=True)
     created_on = models.DateTimeField(auto_now_add=True)
-    student = models.ManyToManyField('Student', null = True, blank = True, related_name = _('Student courses'))
+    student = models.ManyToManyField('Student',  blank = True, related_name = ('StudentCourses'))
+    instructor = models.ManyToManyField('Instructor' , blank = True , related_name = ('CourseTutor'))
 
 
 class Instructor(models.Model):
@@ -41,6 +45,7 @@ class Instructor(models.Model):
     last_name = models.CharField(max_length=50)
     about = models.TextField(max_length=500, blank=True)
     address = models.CharField(max_length=30, blank=True)
+    profession = models.TextField(blank=True, null=True)
 
     def get_full_name(self):
         full_name = self.first_name + " " + self.last_name
