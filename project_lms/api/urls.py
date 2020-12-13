@@ -1,6 +1,6 @@
-from django.contrib import admin
 from django.urls import path, include
+from .views import show_user_view
 
 urlpatterns = [
-    # path('user-info', );
+    path('', show_user_view),
 ]

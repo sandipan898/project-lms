@@ -38,6 +38,8 @@ class Course(models.Model):
     student = models.ManyToManyField('Student',  blank = True, related_name = ('StudentCourses'))
     instructor = models.ManyToManyField('Instructor' , blank = True , related_name = ('CourseTutor'))
 
+    def __str__(self):
+        return self.name
 
 class Instructor(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -46,7 +48,10 @@ class Instructor(models.Model):
     about = models.TextField(max_length=500, blank=True)
     address = models.CharField(max_length=30, blank=True)
     profession = models.TextField(blank=True, null=True)
-
+    
+    def __str__(self):
+            return self.user.username
+    
     def get_full_name(self):
         full_name = self.first_name + " " + self.last_name
         return full_name
