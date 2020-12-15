@@ -23,12 +23,9 @@ class Student(models.Model):
 @receiver(post_save, sender=User)
 def create_student(sender, instance, created, **kwargs):
     if created:
-        Student.objects.create(user=instance)
-
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.student.save()
-
+        student_profile = Student.objects.create(user=instance)
+        student_profile.save()
+        
 
 class Course(models.Model):
     name = models.CharField(max_length=200)
@@ -58,10 +55,7 @@ class Instructor(models.Model):
 
 
 @receiver(post_save, sender=User)
-def create_student(sender, instance, created, **kwargs):
+def create_instructor(sender, instance, created, **kwargs):
     if created:
-        Student.objects.create(user=instance)
-
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.student.save()
+        instructor_profile = Instructor.objects.create(user=instance)
+        instructor_profile.save()
