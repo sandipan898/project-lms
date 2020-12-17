@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from .models import *
+
 # Create your views here.
 
 
@@ -21,4 +23,8 @@ def course_list_view(request):
 
 def games_list_view(request):
     template_name = "api/gameslist.html"
+    return render(request, template_name)
+
+def user_profile_view(request):
+    template_name = "api/user_profile.html"
     return render(request, template_name)

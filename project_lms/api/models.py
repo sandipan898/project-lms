@@ -11,6 +11,7 @@ class Student(models.Model):
     last_name = models.CharField(max_length=50)
     about = models.TextField(max_length=500, blank=True)
     address = models.CharField(max_length=30, blank=True)
+    phone_no = models.CharField(max_length=15, blank=True, null=True)
 
     def get_full_name(self):
         full_name = self.first_name + " " + self.last_name
