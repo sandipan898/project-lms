@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import *
+from .models import Course, Student, Instructor
 
 # Create your views here.
 
@@ -19,7 +19,9 @@ def dashboard_view(request):
 
 def course_list_view(request):
     template_name = "api/courseslist.html"
-    return render(request, template_name)
+    courses = Course.objects.all()
+    context = {"courses": courses}
+    return render(request, template_name, context=context)
 
 def games_list_view(request):
     template_name = "api/gameslist.html"

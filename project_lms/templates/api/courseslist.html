@@ -4,4 +4,9 @@
 
 {% block content %} 
     <h3>Course List</h3>
+    <ul>
+        {% for course in courses %}
+            {{course}}
+        {% endfor %}
+    </ul>
 {% endblock %}
