@@ -13,3 +13,6 @@
 
 ## Mode
 *   Development
+
+
+Project distributed
