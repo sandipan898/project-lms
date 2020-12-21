@@ -60,3 +60,7 @@ def create_instructor(sender, instance, created, **kwargs):
     if created:
         instructor_profile = Instructor.objects.create(user=instance)
         instructor_profile.save()
+
+
+class Game(models.Model):
+    pass

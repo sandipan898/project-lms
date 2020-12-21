@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Course, Student, Instructor
+from django.views import generic
 
 # Create your views here.
 
@@ -9,24 +10,51 @@ from .models import Course, Student, Instructor
 #     render(request, template_name)
 
 
-def home_view(request):
+# def home_view(request):
+#     template_name = "api/home.html"
+#     return render(request, template_name)
+
+class HomeView(generic.View):
     template_name = "api/home.html"
-    return render(request, template_name)
 
-def dashboard_view(request):
+    def get(self, *args, **kwargs):
+        return render(self.request, self.template_name)
+
+# def dashboard_view(request):
+#     template_name = "api/dashboard.html"
+#     return render(request, template_name)
+
+
+class DashboardView(generic.View):
     template_name = "api/dashboard.html"
-    return render(request, template_name)
+    
+    def get(self, *args, **kwargs):
+        return render(self.request, self.template_name)
 
-def course_list_view(request):
+# def course_list_view(request):
+#     template_name = "api/courseslist.html"
+#     courses = Course.objects.all()
+#     context = {"courses": courses}
+#     return render(request, template_name, context=context)
+
+
+class CourseListView(generic.ListView):
     template_name = "api/courseslist.html"
-    courses = Course.objects.all()
-    context = {"courses": courses}
-    return render(request, template_name, context=context)
+    context_object_name = 'courses'
+    queryset = Course.objects.all()
 
-def games_list_view(request):
+# def games_list_view(request):
+#     template_name = "api/gameslist.html"
+#     return render(request, template_name)
+
+
+class GamesListView(generic.ListView):
     template_name = "api/gameslist.html"
-    return render(request, template_name)
+    context_object_name = 'games'
+    queryset = Course.objects.all()
+
 
 def user_profile_view(request):
     template_name = "api/user_profile.html"
     return render(request, template_name)
+

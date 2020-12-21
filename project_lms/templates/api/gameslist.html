@@ -4,4 +4,9 @@
 
 {% block content %} 
     <h3>Games List</h3>
+    <ul>
+        {% for game in games %}
+            {{ game }}
+        {% endfor %}
+    </ul>
 {% endblock %}
