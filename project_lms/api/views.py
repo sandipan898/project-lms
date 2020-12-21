@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Course, Student, Instructor
+from .models import Course, Student, Instructor, Game
 from django.views import generic
 
 # Create your views here.
@@ -51,7 +51,7 @@ class CourseListView(generic.ListView):
 class GamesListView(generic.ListView):
     template_name = "api/gameslist.html"
     context_object_name = 'games'
-    queryset = Course.objects.all()
+    queryset = Game.objects.all()
 
 
 def user_profile_view(request):

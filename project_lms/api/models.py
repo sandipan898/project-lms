@@ -63,4 +63,7 @@ def create_instructor(sender, instance, created, **kwargs):
 
 
 class Game(models.Model):
-    pass
+    name = models.CharField(max_length=200)
+    description = models.TextField(blank=True, null=True)
+    duration = models.TimeField(blank=True, null=True)
+    
