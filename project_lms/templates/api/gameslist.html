@@ -6,7 +6,10 @@
     <h3>Games List</h3>
     <ul>
         {% for game in games %}
-            {{ game }}
+            <li>
+                <h3>{{ game.name }}</h3>
+                <p>{{ game.description }}</p>
+            </li>
         {% endfor %}
     </ul>
 {% endblock %}
