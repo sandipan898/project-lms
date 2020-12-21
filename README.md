@@ -16,4 +16,3 @@
 
 
 Project distributed
-Project Distributed
